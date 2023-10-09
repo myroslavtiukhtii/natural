@@ -1,0 +1,126 @@
+//====================================================================================================
+.hero {
+    padding-top: rem(120);
+    margin-top: rem(-100);
+    clip-path: polygon(0 0,100% 0,100% calc(100% - 120px),50% 100%,0 calc(100% - 120px));
+    background: linear-gradient(90deg, rgba(31,94,55,1) 54%, rgba(2,0,36,0.8855917366946778) 100%);
+
+    @include adaptiveValue("padding-bottom", 80, 45);
+
+    &__container {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+
+       @media (max-width: $tablet) {
+        grid-template-columns: 1fr;
+       }
+    }
+
+    &__bottom {
+        clip-path: polygon(0 0,50% 60px,100% 0,100% 100%,0 100%);
+        margin-top: -60px;
+    }
+
+    &__text__head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: rem(227);
+        height: rem(50);
+        border-radius: rem(15);
+        background: rgba(255, 255, 255, 0.25);
+        color: $mainWhite;
+        font-size: rem(18);
+        font-weight: 500;
+        margin-bottom: rem(20);
+    }
+
+    &__text__title {
+        @include title;
+    }
+
+    &__text__subtitle {
+        @include subtitle;
+    }
+
+    &__text__button {
+        @include mainButton;
+    }
+
+    &__image {
+        justify-self: center;
+
+        & img {
+            max-width: 700px;
+            width: 115%;
+            height: 115%;
+        }
+    }
+
+
+
+}
+
+.slider {
+    @include adaptiveValue("padding-top", 70, 50);
+    @include adaptiveValue("padding-bottom", 70, 50);
+
+    &__container {
+        display: grid;
+        grid-template-columns: 0.8fr 650px;
+        gap: rem(25);
+
+        @media (max-width: $tablet) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__text__head {
+        color: $mainColor;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        @include adaptiveValue("font-size", 30, 20);
+        margin-bottom: rem(20);
+    }
+
+    &__text__title {
+        @include title;
+        color: $mainColor;
+    }
+
+    &__text__subtitle {
+        @include subtitle;
+        color: $mainColor;
+    }
+
+    &__text__button {
+        @include mainButton;
+        width: rem(223);
+        height: rem(79);
+        @include adaptiveValue("font-size", 20, 15);
+    }
+
+    &__swiper {
+        overflow: hidden;
+        touch-action: pan-y;
+        min-height: 450px;
+
+        .swiper-slide {
+            scale: 0.9;
+            transition: $mainTransition ease-in;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .swiper-slide-active {
+            scale: 1;
+        }
+    }
+
+
+}
+//====================================================================================================

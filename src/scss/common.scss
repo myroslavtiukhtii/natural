@@ -1,0 +1,53 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+$mainTransition: all .4s;
+
+
+//titles
+
+@mixin title {
+    color: $mainWhite;
+    font-weight: 600;
+    max-width: rem(650);
+    line-height: 140%;
+    margin-bottom: rem(30);
+    @include adaptiveValue("font-size", 55, 35);
+}
+
+@mixin subtitle {
+    color: $mainWhite;
+    font-size: rem(25);
+    font-weight: 500;
+    opacity: 0.5;
+    max-width: rem(520);
+    line-height: 140%;
+    margin-bottom: rem(68);
+    @include adaptiveValue("font-size", 25, 15);
+}
+
+
+@mixin mainButton {
+    width: rem(263);
+    height: rem(91);
+    border-radius: rem(27);
+    background: $mainButton;
+    color: $mainWhite;
+    font-size: rem(25);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    transition: $mainTransition ease-in;
+    @include adaptiveValue("font-size", 25, 15);
+
+    @media (max-width: $mobile) {
+        width: 100%;
+        height: rem(55);
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            box-shadow: inset 0 0 0 2em $mainWhite;
+            color: #FF584E;
+        }
+    }
+}

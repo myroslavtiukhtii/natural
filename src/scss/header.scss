@@ -1,0 +1,218 @@
+//====================================================================================================
+.header {
+	position: relative;
+	z-index: 5;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: rem(100);
+	}
+
+	&__logo {
+		color: $mainWhite;
+		font-size: rem(20);
+		font-weight: 700;
+	}
+
+	&__menu {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: rem(80);
+
+		@media (max-width: $tablet) {
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			min-height: 100vh;
+			background-color: $mainGreen;
+			flex-direction: column;
+			gap: rem(55);
+			padding: rem(45);
+			padding-top: rem(100);
+			visibility: hidden;
+			transition: $mainTransition ease-in;
+		}
+	}
+
+	&__menu__link {
+		position: relative;
+		color: $mainWhite;
+		font-size: rem(15);
+		font-weight: 500;
+		cursor: pointer;
+		transition: $mainTransition ease-in;
+		padding-bottom: rem(3);
+
+		@media (max-width: $tablet) {
+			transform: translateX(25px);
+			opacity: 0;
+			font-size: rem(35);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: rem(1);
+			background-color: $mainWhite;
+			transition: $mainTransition ease-in;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 0;
+			height: rem(1);
+			background-color: $mainWhite;
+			transition: $mainTransition ease-in;
+		}
+	}
+
+	@media (any-hover: hover) {
+		&__menu__link:hover {
+			&::before {
+				width: 100%;
+			}
+
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		gap: rem(25);
+		
+		@media (max-width: $tablet) {
+			position: absolute;
+			top: 500%;
+			left: -100%;
+			transform: translate(-50%, 0);
+			transition: $mainTransition ease-in;
+			visibility: hidden;
+			scale: 0.5;
+		}
+	}
+
+	&__buttons__signup {
+		color: $mainWhite;
+		font-size: rem(15);
+		font-weight: 500;
+		min-width: max-content;
+	}
+
+	&__buttons__login {
+		background: $mainButton;
+		width: rem(128);
+		height: rem(49);
+		border-radius: rem(100);
+		color: $mainWhite;
+		font-size: rem(15);
+		font-weight: 500;
+		padding: rem(13) rem(44);
+		transition: $mainTransition ease-in;
+
+		@media (any-hover: hover) {
+			&:hover {
+				box-shadow: 0 0.5em 0.5em -0.4em $mainWhite;
+				  transform: translateY(-0.25em);
+			}
+		}
+	}
+}
+
+html.menu-open {
+
+	.header {
+
+		&__menu {
+			left: 0;
+			visibility: visible;
+			scale: 1;
+		}
+
+		&__menu__link {
+			animation: linkDelays .5s forwards;
+		}
+
+		@keyframes linkDelays {
+			100% {opacity: 1; transform: translateX(0);}
+		}
+
+		@for $i from 1 to 10 {
+			&__menu__link:nth-child(#{$i}) { animation-delay: $i * 0.25s; }
+		}
+
+		&__buttons {
+			scale: 1;
+			visibility: visible;
+			left: 50%;
+		}
+	}
+}
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+	display: none;
+	@media (max-width: $tablet) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: $mainWhite;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
