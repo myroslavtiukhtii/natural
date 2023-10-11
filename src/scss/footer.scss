@@ -1,3 +1,65 @@
 //====================================================================================================
 
+.footer {
+    padding-bottom: rem(50);
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(10);
+
+        @media (max-width: $pc) {
+            flex-direction: column;
+        }
+    }
+
+    &__logo {
+        color: #FF7C4E;
+        font-size: rem(20);
+        font-weight: 700;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: rem(80);
+        min-height: rem(100);
+
+        @media (max-width: $mobile) {
+            gap: rem(25);
+        }
+    }
+
+    &__menu__link {
+        color: #0F1F1C;
+        font-size: rem(15);
+        font-weight: 500;
+        opacity: 0.5;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: rem(60);
+
+        .buttons__signup {
+            color: #838B89;
+            font-size: rem(15);
+            font-weight: 500;
+            min-width: max-content;
+        }
+
+        .buttons__login {
+            @include mainButton;
+            width: 128px;
+            height: 49px;
+            font-size: rem(15) !important;
+            font-weight: 500;
+            min-width: rem(128);
+        }
+    }
+}
 //====================================================================================================

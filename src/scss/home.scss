@@ -104,7 +104,7 @@
     &__swiper {
         overflow: hidden;
         touch-action: pan-y;
-        min-height: 450px;
+        width: auto;
 
         .swiper-slide {
             scale: 0.9;
@@ -118,6 +118,209 @@
 
         .swiper-slide-active {
             scale: 1;
+        }
+    }
+
+
+}
+
+.reviews {
+    @include adaptiveValue("padding-bottom", 100, 50);
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(40);
+
+        @media (max-width: $tablet) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+
+    &__image {
+        width: 100%;
+
+        @media (max-width: $tablet) {
+            order: 2;
+        }
+        
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 480px;
+
+            @media (max-width: $tablet) {
+                max-width: unset;
+            }
+        }
+    }
+
+    &__title {
+        @include title;
+        color: $mainColor;
+    }
+
+    &__comment {
+
+        .comment__top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: rem(400);
+            margin-bottom: rem(70);
+        }
+
+        .comment__avatar {
+            width: 134px;
+            height: 134px;
+            background-color: #f47e66;
+            border-radius: 50%;
+        }
+
+        .comment__username {
+            color: #0F1F1C;
+            font-weight: 500;
+            margin-bottom: rem(10);
+            @include adaptiveValue("font-size", 33, 20);
+        }
+
+        .comment__location {
+            color: #0F1F1C;
+            font-size: rem(25);
+            font-weight: 400;
+            @include adaptiveValue("font-size", 25, 15);
+        }
+
+        .comment__text {
+            color: #0F1F1C;
+            font-size: rem(22);
+            font-weight: 500;
+            opacity: 0.5;
+            line-height: 150%;
+            margin-bottom: rem(30);
+            @include adaptiveValue("font-size", 22, 15);
+        }
+
+        .comment__stars {
+            display: flex;
+            align-items: center;
+            gap: rem(8);
+
+            .stars__icon {
+
+                svg {
+                    width: 59px;
+                    height: 59px;
+                    fill: #C4C4C4;
+
+                    @media (max-width: $mobile) {
+                        width: 29px;
+                        height: 29px;
+                    }
+                }
+            }
+
+            .stars__icon:nth-child(1),
+            .stars__icon:nth-child(2),
+            .stars__icon:nth-child(3) {
+                svg {
+                    fill: #FFD336;
+                }
+            }
+        }
+    }
+
+}
+
+.discount {
+    
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @include adaptiveValue("padding-top", 115, 50);
+        @include adaptiveValue("padding-bottom", 115, 50);
+        background-color: #FFFFFF;
+        border-radius: 60px;
+    }
+
+    &__title {
+        @include title;
+        color: $mainColor;
+        text-align: center;
+    }
+
+    &__subtitle {
+        @include subtitle;
+        color: $mainColor;
+        margin: 0 auto;
+        margin-bottom: rem(60);
+    }
+
+    &__button {
+        @include mainButton;
+    }
+}
+
+.subscribe {
+
+    @include adaptiveValue("padding-top", 135, 50);
+    @include adaptiveValue("padding-bottom", 100, 50);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title {
+        @include title;
+        color: $mainColor;
+        text-align: center;
+    }
+
+    &__form {
+        position: relative;
+        width: 100%;
+        max-width: rem(800);
+        min-height: rem(129);
+        background-color: $mainWhite;
+        border-radius: rem(35);
+        padding: rem(12) rem(15);
+        padding-left: rem(46);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(25);
+
+        @media (max-width: $tablet) {
+            flex-direction: column;
+            padding: rem(12) rem(15);
+        }
+    }
+
+    &__input {
+        width: 100%;
+        min-height: 100%;
+        color: $mainColor;
+        font-weight: 500;
+        opacity: 0.5;
+        outline: none;
+        @include adaptiveValue("font-size", 24, 15);
+    }
+
+
+    &__button {
+        @include mainButton;
+        min-width: rem(300);
+
+        @media (max-width: $tablet) {
+            width: 100%;
+            min-width: unset;
         }
     }
 

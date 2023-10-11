@@ -37,7 +37,7 @@ function initSliders() {
 			observeParents: true,
 			slidesPerView: 1.2,
 			spaceBetween: 0,
-			autoHeight: true,
+			autoHeight: false,
 			speed: 800,
 			centeredSlides: true,
 			loop: false,

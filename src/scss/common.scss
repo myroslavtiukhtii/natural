@@ -3,6 +3,10 @@
 $mainTransition: all .4s;
 
 
+body {
+    background-color: #F6F6F6;
+}
+
 //titles
 
 @mixin title {
@@ -11,7 +15,7 @@ $mainTransition: all .4s;
     max-width: rem(650);
     line-height: 140%;
     margin-bottom: rem(30);
-    @include adaptiveValue("font-size", 55, 35);
+    @include adaptiveValue("font-size", 55, 30);
 }
 
 @mixin subtitle {
@@ -30,6 +34,7 @@ $mainTransition: all .4s;
     width: rem(263);
     height: rem(91);
     border-radius: rem(27);
+    border: 1px solid transparent;
     background: $mainButton;
     color: $mainWhite;
     font-size: rem(25);
